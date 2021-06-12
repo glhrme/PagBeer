@@ -7,7 +7,7 @@ Este é meu primeiro projeto iOS sem acompanhamento de cursos.
 
 ## Motivo
 
-Aplicação de teste para desenvolvedores iOS da [PagSeguro | PagBank](http://pagseguro.uol.com.br), empresa onde sou Software Engineer Jr.
+Aplicação de teste para desenvolvedores iOS da [PagSeguro | PagBank](http://pagseguro.uol.com.br), empresa onde sou Software Engineer.
 
 ## Arquitetura
 
