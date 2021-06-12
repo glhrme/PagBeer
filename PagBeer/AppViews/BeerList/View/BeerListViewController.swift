@@ -63,6 +63,8 @@ class BeerListViewController: UIViewController, UITableViewDataSource, UITableVi
         guard let beerList = self.beerListData else { return cell }
         cell.accessibilityIdentifier = "BeerCell\(indexPath.row)"
         cell.setupCell(model: beerList[indexPath.row])
+        cell.layer.borderWidth = 5
+        cell.layer.borderColor = #colorLiteral(red: 0.6739478344, green: 1, blue: 0.9955382427, alpha: 1)
         return cell
     }
     
@@ -72,4 +74,5 @@ class BeerListViewController: UIViewController, UITableViewDataSource, UITableVi
     
         viewModel.goToBeerDetails(model: beerList[indexPath.row])
     }
+    
 }

@@ -12,6 +12,9 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BeerDetailsViewController" customModule="PagBeer" customModuleProvider="target">
             <connections>
                 <outlet property="imageBeer" destination="Cll-Bp-eDn" id="qP6-Ck-C4Z"/>
+                <outlet property="labelDescription" destination="NHo-y6-84K" id="kew-X7-HnN"/>
+                <outlet property="labelInfos" destination="Pqs-go-I1x" id="8et-BY-QNe"/>
+                <outlet property="labelTagline" destination="QSF-SC-rUN" id="Nf4-aR-3jP"/>
                 <outlet property="labelTitle" destination="g4A-4Z-F7L" id="93C-Cm-5Lo"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -24,7 +27,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="20V-Gd-iGw">
                     <rect key="frame" x="16" y="44" width="382" height="818"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g4A-4Z-F7L">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g4A-4Z-F7L">
                             <rect key="frame" x="160.5" y="8" width="61" height="33"/>
                             <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="24"/>
                             <nil key="textColor"/>
@@ -37,12 +40,39 @@
                                 <constraint firstAttribute="width" constant="240" id="oMf-nB-4oS"/>
                             </constraints>
                         </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QSF-SC-rUN">
+                            <rect key="frame" x="0.0" y="309" width="49" height="27.5"/>
+                            <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pqs-go-I1x">
+                            <rect key="frame" x="0.0" y="344.5" width="382" height="25"/>
+                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NHo-y6-84K">
+                            <rect key="frame" x="0.0" y="385.5" width="382" height="19.5"/>
+                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
                         <constraint firstItem="g4A-4Z-F7L" firstAttribute="centerX" secondItem="20V-Gd-iGw" secondAttribute="centerX" id="6qn-T5-4CO"/>
+                        <constraint firstAttribute="trailing" secondItem="NHo-y6-84K" secondAttribute="trailing" id="H2x-0c-kxu"/>
+                        <constraint firstItem="Pqs-go-I1x" firstAttribute="top" secondItem="QSF-SC-rUN" secondAttribute="bottom" constant="8" id="KdG-qy-rif"/>
+                        <constraint firstItem="Pqs-go-I1x" firstAttribute="leading" secondItem="20V-Gd-iGw" secondAttribute="leading" id="Tde-0g-LcE"/>
                         <constraint firstItem="Cll-Bp-eDn" firstAttribute="top" secondItem="g4A-4Z-F7L" secondAttribute="bottom" constant="16" id="YbH-G6-dK5"/>
+                        <constraint firstItem="NHo-y6-84K" firstAttribute="top" secondItem="Pqs-go-I1x" secondAttribute="bottom" constant="16" id="ZC6-D6-aPm"/>
+                        <constraint firstItem="QSF-SC-rUN" firstAttribute="top" secondItem="Cll-Bp-eDn" secondAttribute="bottom" constant="12" id="ahC-Nh-CtF"/>
+                        <constraint firstItem="QSF-SC-rUN" firstAttribute="leading" secondItem="20V-Gd-iGw" secondAttribute="leading" id="d3k-zh-iWk"/>
+                        <constraint firstItem="Pqs-go-I1x" firstAttribute="centerX" secondItem="20V-Gd-iGw" secondAttribute="centerX" id="kcZ-eV-11s"/>
+                        <constraint firstItem="NHo-y6-84K" firstAttribute="leading" secondItem="20V-Gd-iGw" secondAttribute="leading" id="nZe-QT-YRi"/>
                         <constraint firstItem="g4A-4Z-F7L" firstAttribute="top" secondItem="20V-Gd-iGw" secondAttribute="top" constant="8" id="qVN-q3-VzJ"/>
+                        <constraint firstAttribute="trailing" secondItem="Pqs-go-I1x" secondAttribute="trailing" id="qmQ-aJ-Ojg"/>
                         <constraint firstItem="Cll-Bp-eDn" firstAttribute="centerX" secondItem="20V-Gd-iGw" secondAttribute="centerX" id="xsG-me-RD1"/>
                     </constraints>
                 </view>

@@ -14,6 +14,9 @@ class BeerDetailsViewController: UIViewController {
     //MARK: - Outlets
     @IBOutlet weak var labelTitle: UILabel!
     @IBOutlet weak var imageBeer: UIImageView!
+    @IBOutlet weak var labelTagline: UILabel!
+    @IBOutlet weak var labelInfos: UILabel!
+    @IBOutlet weak var labelDescription: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,9 +37,12 @@ class BeerDetailsViewController: UIViewController {
     //MARK: - Bind
     
     func bindBeerLayout() {
-        guard let beer = viewModel?.beer else { return }
-        labelTitle.text = beer.name
-        imageBeer.image = UIImage(named: beer.image_url)
+        guard let model = viewModel else { return }
+        labelTitle.text = model.beer.name
+        imageBeer.image = UIImage(named: model.getImage())
+        labelTagline.text = model.beer.tagline
+        labelInfos.text = model.getInfos()
+        labelDescription.text = model.beer.descricao
     }
 
 }

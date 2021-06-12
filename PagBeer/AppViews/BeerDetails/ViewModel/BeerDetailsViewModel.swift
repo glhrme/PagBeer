@@ -13,4 +13,13 @@ class BeerDetailsViewModel {
     init(beer: BeerModel) {
         self.beer = beer
     }
+    
+    func getInfos() -> String {
+        let infos = "\(beer.abv)% ABV | \(beer.ibu) IBU"
+        return infos
+    }
+    
+    func getImage() -> String {
+        return beer.image_url
+    }
 }
