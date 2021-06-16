@@ -14,12 +14,13 @@ class BeerItemViewCell: UITableViewCell {
     @IBOutlet weak var labelTitle: UILabel!
     @IBOutlet weak var labelInfos: UILabel!
     
+    
     //MARK: - Methods
     //Método que realiza o bind da minha célula
     func setupCell(model: BeerModel) {
-        imageBeer.image = UIImage(named: model.image_url)
+        //imageBeer.image = UIImage(named: "")
         labelTitle.text = model.name
-        labelInfos.text = "\(model.abv)% Abv | \(model.ibu) Ibu"
+        labelInfos.text = "\(model.getAbv())% Abv | \(model.getIbu()) Ibu"
     }
     
 }
