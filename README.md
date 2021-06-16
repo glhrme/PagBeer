@@ -1,3 +1,4 @@
+
 # PagBeer
 
 Este é meu primeiro projeto iOS sem acompanhamento de cursos.
@@ -26,6 +27,8 @@ Utilizei coordinator para ser o responsável por fazer todo o controle de navega
 
 ### TODO
 
- - Conectar com [API](http://punkapi.com) e fazer consumo de REST.
- - Substituir table view por Collection View
- - Testes Unitários
+ - [x] Conectar com [API](http://punkapi.com) e fazer consumo de REST.
+ - [ ] Implementar exibição de imagens por url ([Kingfisher?](https://github.com/onevcat/Kingfisher))
+ - [ ] Substituir table view por Collection View (puro charme)
+ - [ ] Paginação dos registros
+ - [ ] Testes Unitários
