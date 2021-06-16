@@ -7,22 +7,57 @@
 
 import UIKit
 
-class BeerModel: NSObject {
+struct BeerModel: Codable {
     let id: Int
     let name: String
-    let descricao: String
-    let image_url: String
-    let abv: Double
-    let ibu: Double
-    let tagline: String
+    let description: String?
+    let image_url: String?
+    let abv: Double?
+    let ibu: Double?
+    let tagline: String?
     
-    init(id: Int, name: String, description: String, image_url: String, abv: Double, ibu: Double, tagline: String) {
-        self.id = id
-        self.name = name
-        self.descricao = description
-        self.image_url = image_url
-        self.abv = abv
-        self.ibu = ibu
-        self.tagline = tagline
+    func getDescription() -> String {
+        if self.description != nil {
+            return self.description!
+        } else {
+            return ""
+        }
+    }
+    
+    func getAbv() -> String {
+        if self.abv != nil {
+            return "\(self.abv!)"
+        } else {
+            return "-"
+        }
+    }
+    
+    func getIbu() -> String {
+        if self.ibu != nil {
+            return "\(self.ibu!)"
+        } else {
+            return "-"
+        }
+    }
+    
+    func getTagline() -> String {
+        if self.tagline != nil {
+            return "\(self.tagline!)"
+        } else {
+            return "-"
+        }
+    }
+    
+    func getInfos() -> String {
+        let infos = "\(self.getAbv())% ABV | \(self.getIbu()) IBU"
+        return infos
+    }
+    
+    func getImage() -> String {
+        if self.image_url != nil {
+            return self.image_url!
+        } else {
+            return ""
+        }
     }
 }
