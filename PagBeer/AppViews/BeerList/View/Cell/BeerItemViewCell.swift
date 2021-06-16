@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class BeerItemViewCell: UITableViewCell {
 
@@ -18,7 +19,16 @@ class BeerItemViewCell: UITableViewCell {
     //MARK: - Methods
     //Método que realiza o bind da minha célula
     func setupCell(model: BeerModel) {
-        //imageBeer.image = UIImage(named: "")
+        let url = URL(string: model.getImage())
+        imageBeer.kf.setImage(with: url, placeholder: nil, options:  nil) { (result) in
+            switch result {
+            case .success:
+                self.imageBeer.contentMode = .scaleAspectFit
+            case .failure:
+                self.imageBeer.contentMode = .center
+                self.imageBeer.image = UIImage(systemName: "xmark.icloud")
+            }
+        }
         labelTitle.text = model.name
         labelInfos.text = "\(model.getAbv())% Abv | \(model.getIbu()) Ibu"
     }

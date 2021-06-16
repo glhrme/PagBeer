@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class BeerDetailsViewController: UIViewController {
 
@@ -39,10 +40,20 @@ class BeerDetailsViewController: UIViewController {
     func bindBeerLayout() {
         guard let model = viewModel else { return }
         labelTitle.text = model.beer.name
-        //imageBeer.image = UIImage(named: model.getImage())
         labelTagline.text = model.beer.getTagline()
         labelInfos.text = model.beer.getInfos()
         labelDescription.text = model.beer.getDescription()
+        
+        let url = URL(string: model.beer.getImage())
+        imageBeer.kf.setImage(with: url, placeholder: nil, options:  nil) { (result) in
+            switch result {
+            case .success:
+                self.imageBeer.contentMode = .scaleAspectFit
+            case .failure:
+                self.imageBeer.contentMode = .center
+                self.imageBeer.image = UIImage(systemName: "xmark.icloud")
+            }
+        }
         
     }
 
