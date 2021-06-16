@@ -7,10 +7,9 @@
 
 import UIKit
 
-class BeerListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-
+class BeerListViewController: UIViewController, UIBeerList {
     let viewModel: BeerListViewModel
-    var beerListData: [BeerModel]? = nil
+    var beerListData: [BeerModel] = []
     let identifierCell = "BeerCell"
     
     //MARK: - IBOutlets
@@ -20,8 +19,9 @@ class BeerListViewController: UIViewController, UITableViewDataSource, UITableVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel.viewController = self
         // Atavés do meu viewModel, pego a lista de cervejas (ainda mockada)
-        self.beerListData = viewModel.getBeerList()
+        viewModel.getBeerList()
         
         // Registrando minha célula na tabela para depois recuperar no método que retorna a célula reutilizavel
         tableViewBeers.register(UINib(nibName: "BeerItemViewCell", bundle: nil), forCellReuseIdentifier: self.identifierCell)
@@ -50,17 +50,24 @@ class BeerListViewController: UIViewController, UITableViewDataSource, UITableVi
         super.init(coder: coder)
     }
     
-    //MARK: - UITableViewDataSource
+    func updateData(data: [BeerModel]) {
+        //UPDATE Date
+        self.beerListData = data
+        tableViewBeers.reloadData()
+    }
+}
+
+//MARK: - UITableView
+extension BeerListViewController: UITableViewDataSource, UITableViewDelegate {
     //Configurando a quantidade de itens da minha tabela
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let count = beerListData?.count else { return 0 }
-        return count
+        return beerListData.count
     }
     
     //Configurando célula que irá aparecer na minha table view
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: self.identifierCell) as! BeerItemViewCell
-        guard let beerList = self.beerListData else { return cell }
+        let beerList = self.beerListData
         cell.accessibilityIdentifier = "BeerCell\(indexPath.row)"
         cell.setupCell(model: beerList[indexPath.row])
         cell.layer.borderWidth = 5
@@ -69,10 +76,6 @@ class BeerListViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        guard let beerList = self.beerListData else { return }
-    
-        viewModel.goToBeerDetails(model: beerList[indexPath.row])
+        viewModel.goToBeerDetails(model: self.beerListData[indexPath.row])
     }
-    
 }
