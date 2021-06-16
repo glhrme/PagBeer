@@ -39,10 +39,11 @@ class BeerDetailsViewController: UIViewController {
     func bindBeerLayout() {
         guard let model = viewModel else { return }
         labelTitle.text = model.beer.name
-        imageBeer.image = UIImage(named: model.getImage())
-        labelTagline.text = model.beer.tagline
-        labelInfos.text = model.getInfos()
-        labelDescription.text = model.beer.descricao
+        //imageBeer.image = UIImage(named: model.getImage())
+        labelTagline.text = model.beer.getTagline()
+        labelInfos.text = model.beer.getInfos()
+        labelDescription.text = model.beer.getDescription()
+        
     }
 
 }
