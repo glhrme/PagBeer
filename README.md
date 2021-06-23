@@ -29,6 +29,6 @@ Utilizei coordinator para ser o responsável por fazer todo o controle de navega
 
  - [x] Conectar com [API](http://punkapi.com) e fazer consumo de REST.
  - [x] Implementar exibição de imagens por url ([Kingfisher?](https://github.com/onevcat/Kingfisher))
- - [ ] Substituir table view por Collection View (puro charme)
+ - [x] Substituir table view por Collection View (puro charme)
  - [ ] Paginação dos registros
  - [ ] Testes Unitários
