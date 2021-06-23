@@ -29,7 +29,6 @@ class BeerCoordinator {
         return beerListView
     }
     
-    
 }
 
 // Delegate em extension

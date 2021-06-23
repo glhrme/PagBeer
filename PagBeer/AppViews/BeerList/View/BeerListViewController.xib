@@ -10,9 +10,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BeerListViewController" customModule="PagBeer" customModuleProvider="target">
             <connections>
+                <outlet property="collectionView" destination="5Da-Pb-8e8" id="loj-cY-XzB"/>
                 <outlet property="labelTitle" destination="XlF-s8-UDw" id="xZh-mQ-1Ge"/>
                 <outlet property="stackViewMain" destination="v9F-T3-tIs" id="ssu-E6-U2e"/>
-                <outlet property="tableViewBeers" destination="SpP-cl-aLu" id="9eW-fJ-nbI"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -30,12 +30,22 @@
                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SpP-cl-aLu">
+                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="5Da-Pb-8e8">
                             <rect key="frame" x="0.0" y="33" width="351" height="701"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <rect key="contentStretch" x="0.0" y="0.10000000000000001" width="1" height="1"/>
-                        </tableView>
+                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="pvE-Vt-QaP">
+                                <size key="itemSize" width="128" height="128"/>
+                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            </collectionViewFlowLayout>
+                        </collectionView>
                     </subviews>
+                    <constraints>
+                        <constraint firstItem="5Da-Pb-8e8" firstAttribute="leading" secondItem="v9F-T3-tIs" secondAttribute="leading" id="3xI-CX-DRj"/>
+                        <constraint firstAttribute="bottom" secondItem="5Da-Pb-8e8" secondAttribute="bottom" id="8Lh-Cm-cfm"/>
+                        <constraint firstAttribute="trailing" secondItem="5Da-Pb-8e8" secondAttribute="trailing" id="ygt-AS-JtJ"/>
+                    </constraints>
                 </stackView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>

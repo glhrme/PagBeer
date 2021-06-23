@@ -40,11 +40,11 @@ class BeerDetailsViewController: UIViewController {
     func bindBeerLayout() {
         guard let model = viewModel else { return }
         labelTitle.text = model.beer.name
-        labelTagline.text = model.beer.getTagline()
+        labelTagline.text = model.beer.tagline
         labelInfos.text = model.beer.getInfos()
-        labelDescription.text = model.beer.getDescription()
+        labelDescription.text = model.beer.description
         
-        let url = URL(string: model.beer.getImage())
+        let url = URL(string: model.beer.image_url ?? "")
         imageBeer.kf.setImage(with: url, placeholder: nil, options:  nil) { (result) in
             switch result {
             case .success:

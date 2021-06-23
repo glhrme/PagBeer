@@ -7,25 +7,31 @@
 
 import Foundation
 
-protocol BeerListViewModelDelegate {
+protocol BeerListViewModelDelegate: AnyObject {
     func beerDetails(model: BeerModel)
 }
 
-protocol UIBeerList {
+protocol BeerListDelete: AnyObject {
+    /// Função responsável pela atualização da tabela.
     func updateData(data: [BeerModel])
 }
 
 class BeerListViewModel {
-    var delegate: BeerListViewModelDelegate?
-    var viewController: UIBeerList?
+    weak var delegate: BeerListViewModelDelegate?
+    weak var viewController: BeerListDelete?
     
     func goToBeerDetails(model: BeerModel) {
         delegate?.beerDetails(model: model)
     }
     
     func getBeerList() {
-        BeerListService().fetchBeers { (beers) in
-            self.viewController?.updateData(data: beers)
+        BeerListService().fetchBeers { (result) in
+            switch result {
+            case .success(let beers):
+                self.viewController?.updateData(data: beers)
+            case .failure(let error):
+                print(error)
+            }
         }
     }
 }

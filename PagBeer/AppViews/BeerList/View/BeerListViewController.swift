@@ -7,7 +7,7 @@
 
 import UIKit
 
-class BeerListViewController: UIViewController, UIBeerList {
+class BeerListViewController: UIViewController, BeerListDelete {
     let viewModel: BeerListViewModel
     var beerListData: [BeerModel] = []
     let identifierCell = "BeerCell"
@@ -15,7 +15,7 @@ class BeerListViewController: UIViewController, UIBeerList {
     //MARK: - IBOutlets
     @IBOutlet weak var stackViewMain: UIStackView!
     @IBOutlet weak var labelTitle: UILabel!
-    @IBOutlet weak var tableViewBeers: UITableView!
+    @IBOutlet weak var collectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,10 +24,12 @@ class BeerListViewController: UIViewController, UIBeerList {
         viewModel.getBeerList()
         
         // Registrando minha célula na tabela para depois recuperar no método que retorna a célula reutilizavel
-        tableViewBeers.register(UINib(nibName: "BeerItemViewCell", bundle: nil), forCellReuseIdentifier: self.identifierCell)
+        collectionView.register(UINib(nibName: "BeerListCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: self.identifierCell)
         // Avisando a minha tabela que o responsável por implementar seu DataSource delegate é este ViewController
-        tableViewBeers.dataSource = self
-        tableViewBeers.delegate = self
+        
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -51,31 +53,30 @@ class BeerListViewController: UIViewController, UIBeerList {
     }
     
     func updateData(data: [BeerModel]) {
-        //UPDATE Date
         self.beerListData = data
-        tableViewBeers.reloadData()
+        collectionView.reloadData()
     }
 }
 
 //MARK: - UITableView
-extension BeerListViewController: UITableViewDataSource, UITableViewDelegate {
-    //Configurando a quantidade de itens da minha tabela
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return beerListData.count
+extension BeerListViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.beerListData.count
     }
     
-    //Configurando célula que irá aparecer na minha table view
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: self.identifierCell) as! BeerItemViewCell
-        let beerList = self.beerListData
-        cell.accessibilityIdentifier = "BeerCell\(indexPath.row)"
-        cell.setupCell(model: beerList[indexPath.row])
-        cell.layer.borderWidth = 5
-        cell.layer.borderColor = #colorLiteral(red: 0.6739478344, green: 1, blue: 0.9955382427, alpha: 1)
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: self.identifierCell, for: indexPath) as! BeerListCollectionViewCell
+        cell.setupCell(model: self.beerListData[indexPath.row])
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        viewModel.goToBeerDetails(model: self.beerListData[indexPath.row])
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = collectionView.bounds.width / 2
+        return CGSize(width: width - 5, height: 160)
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.viewModel.goToBeerDetails(model: self.beerListData[indexPath.row])
+    }
+    
 }

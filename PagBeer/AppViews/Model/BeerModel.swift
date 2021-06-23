@@ -10,54 +10,17 @@ import UIKit
 struct BeerModel: Codable {
     let id: Int
     let name: String
-    let description: String?
-    let image_url: String?
-    let abv: Double?
-    let ibu: Double?
-    let tagline: String?
-    
-    func getDescription() -> String {
-        if self.description != nil {
-            return self.description!
-        } else {
-            return ""
-        }
-    }
-    
-    func getAbv() -> String {
-        if self.abv != nil {
-            return "\(self.abv!)"
-        } else {
-            return "-"
-        }
-    }
-    
-    func getIbu() -> String {
-        if self.ibu != nil {
-            return "\(self.ibu!)"
-        } else {
-            return "-"
-        }
-    }
-    
-    func getTagline() -> String {
-        if self.tagline != nil {
-            return "\(self.tagline!)"
-        } else {
-            return "-"
-        }
-    }
-    
+    var description: String?
+    var image_url: String?
+    var abv: Double?
+    var ibu: Double?
+    var tagline: String?
+
+
     func getInfos() -> String {
-        let infos = "\(self.getAbv())% ABV | \(self.getIbu()) IBU"
+        let infos = "\(abv?.description ?? "-" )% ABV | \(ibu?.description ?? "-") IBU"
         return infos
     }
-    
-    func getImage() -> String {
-        if self.image_url != nil {
-            return self.image_url!
-        } else {
-            return ""
-        }
-    }
 }
+
+
